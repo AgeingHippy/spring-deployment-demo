@@ -17,7 +17,7 @@ public class SpringDeploymentDemoApplication {
 	@Bean
 	public CommandLineRunner loadInitialData(HelloRepository helloRepository) {
 		return (args) -> {
-			if (helloRepository.findAll().size() == 0) {
+			if (helloRepository.findAll().isEmpty()) {
 				helloRepository.save(new Hello("CodingNomads"));
 			}
 		};
