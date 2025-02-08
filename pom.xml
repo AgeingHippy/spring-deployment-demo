@@ -53,7 +53,8 @@
     </dependencies>
 
     <build>
-        <finalName>HelloWorld</finalName>
+<!--        <finalName>HelloWorld</finalName>-->
+        <finalName>ROOT</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
