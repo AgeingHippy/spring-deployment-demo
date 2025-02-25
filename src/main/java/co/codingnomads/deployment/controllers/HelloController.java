@@ -18,6 +18,8 @@ public class HelloController {
     @Autowired
     HelloService helloService;
 
+    private long healthCheckCount = 0L;
+
     @GetMapping("/")
     public String sayHello(Model model) {
         model.addAttribute("hello", helloService.getHello());
@@ -27,7 +29,10 @@ public class HelloController {
     @GetMapping("/health")
     @ResponseBody
     public String checkHealth(@RequestParam(required = false) String id) {
-        log.info(MessageFormat.format("******* HealthCheck ({0}) *******", id));
+        if (healthCheckCount % 100 == 0 || id != null) {
+            log.info(MessageFormat.format("******* HealthCheck ({0}) *******", id));
+        }
+        healthCheckCount++;
         return "ok";
     }
 }
